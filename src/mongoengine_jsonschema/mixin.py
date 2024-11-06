@@ -171,7 +171,8 @@ class JsonSchemaMixin:
                 field_dict[v] = _val
 
         if 'pattern' in field_dict.keys() and field_dict['pattern'] is not None:
-            field_dict['pattern'] = field_dict['pattern'].pattern
+            if isinstance(field_dict['pattern'], re.Pattern):
+                field_dict['pattern'] = field_dict['pattern'].pattern
 
         if 'default' in field_dict.keys() and isinstance(getattr(field, 'default'), typing.Callable):
             field_dict['default'] = [] if type(field) == me.fields.ListField else {}

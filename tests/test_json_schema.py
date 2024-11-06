@@ -97,6 +97,7 @@ class ExampleDocument(me.Document, JsonSchemaMixin):
     string_field = me.StringField(min_length=1, max_length=2, choices=['1', '2', '3'], regex=r'.*', default='1')
     string_field_excluded = me.StringField(exclude_from_schema=True)
     URL_field = me.URLField()
+    URL_field2 = me.URLField(url_regex=r"^https?://[^\s/$.?#].[^\s]*$")
     UUID_field = me.UUIDField()
 
 
